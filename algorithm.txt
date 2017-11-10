@@ -1,0 +1,27 @@
+MIPS Programming Assignment 1 Algorithm
+
+************GENERAL SOLUTION****************
+read user input and store it in register
+compare stored value to 00000000-FFFFFFFF hex range
+if not in that range output "Invalid hexadecimal number."
+else convert hex number into decimal number and save it to a register
+load register
+output decimal number
+
+
+**************DETAILED SOLUTION*************
+initialize .data with any strings/space program needs
+
+//output statement asking for user input
+load $v0 with 4 for output
+load argument with string asking for user input
+make a syscall
+
+//read in the string
+load $v0 with 8 for input
+load argument with string allocating space for string
+load a1 with same space allocated for string
+make a syscall
+
+
+
