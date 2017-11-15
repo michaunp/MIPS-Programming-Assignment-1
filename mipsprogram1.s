@@ -87,31 +87,6 @@ special_output:
 	add $a0,$zero,$s6                   #load argument with quotient
 	syscall
 	li $v0,1                     #load code to print integer
-	add $a0,$zero,$s7                    #load argument with remainder
+	add $a0,$zero,$s7            #load argument with remainder
 	syscall
-	j end     	
-	
-	
-	
-compute_exponent:
-	move $t3,$zero        #clear value of $t3 register so it can be used again
-	addi $t3,$t3,16       #initialize register with base 16
-	move $t7,$zero        #clear value of $t7 register so it can be used again
-	addi $t7,$t7,1        #initialize register with 1
-	move $s1,$zero        #clear value of $s1 register so it can be used again
-	add $s1,$s1,$zero     #initialize counter with zero
-exponent_loop:
-	beq $t8,$zero,exponent_loop_exit   #checks if power is equal to zero, if so skips loop
-	bge $s1,$t8,exponent_loop_exit #checks if loop has iterated proper amount of times
-	sll $t7,$t7,4                  #multiply register by 16 by shifting left 4 times
-	addi $s1,$s1,1                 #increment counter
-	j exponent_loop                #jumps back to beginning of exponent loop
-		
-exponent_loop_exit:
-	j compute_sum                  #the result of the exponent remains one and is sent to the compute sum flag
-	
-	
-	sll $t3,$t6,2                  #multiply length of string by four
-	addi $t3,$t3,-4                #subtract that value by four to get shift amount
-	sllv $t2,$t2,$t3                   #multiplies the hex value by the exponent product in order to get decimal value
-	add $s3,$s3,$t2                #add that register to the register that holds the sum
+	j end     	                 #jump to end
