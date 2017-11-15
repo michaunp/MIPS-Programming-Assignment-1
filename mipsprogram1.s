@@ -36,6 +36,7 @@ loop:
 	blt $t1,71,check_uppercase #goes to get value of char since it's valid
 	blt $t1,97,invalid #checks if character is less than 97, branches to invalid section if true
 	blt $t1,103,check_lowercase #goes to get value of char since it's valid
+	j invalid
 	
  
 check_num:
